@@ -1,44 +1,35 @@
-# Gelenkarm – modularer 3D-gedruckter Haltearm
+# Gelenkarm – modulares 3D-Druck-Gelenksystem
 
-**Status: V1.0 Kugelgelenk-Test (Prototyp, keine freigegebene Traglast)**
+Modulares Haltesystem für ESP32-CAMs, kleine Kameras, Sensoren und leichtes Werkzeug. Geplant sind drei 120-mm-Arme mit einzeln arretierbaren Gelenken, 150 g Ziel-Nutzlast an der Spitze sowie eine Tischklemme als Basis (alternativ an einem ausreichend schweren Werkstattgewicht befestigt).
 
-Ziel: modularer Halter für ESP32-CAMs, kleine Kameras, Sensoren und leichtes Werkzeug. Geplant sind drei 120-mm-Arme mit einzeln arretierbaren Kugelgelenken, 150 g Nutzlast an der Spitze und eine universelle Tischklemme. Wahlweise wird die Klemme an einem geeigneten Werkstattgewicht befestigt.
+## Aktuelle Version: V2.8
 
-## Aktueller Umfang
+**[OpenSCAD-Quelle – Winkelgelenk V2.8](cad/Winkelgelenk_90Grad_V2_8.scad)**
 
-Der erste Test enthält eine 25-mm-Kugel mit **65-mm-Testhebel** und eine zweiteilige Kugelpfanne mit **zwei M5-Klemmschrauben**. Dies ist **noch nicht** der fertige 3 × 120-mm-Arm und enthält noch keine Tischklemme.
+**[Änderungen und Prüfinformationen](cad/Winkelgelenk_90Grad_V2_8.md)**
 
-Quelle: [Gelenk_V1_Test.scad](cad/Gelenk_V1_Test.scad).
+- 90°-Winkel mit zwei zueinander senkrechten M5-Gelenkachsen
+- Langer Schenkel: 30 mm bis Zinkenbeginn; kurzer Schenkel: 10 mm bis Zinkenbeginn
+- 2er-/3er-Gabel mit M5-Bohrungen (Ø 5,3 mm)
+- Zwei **4 × 4 mm große, nach außen angeformte 45°-Verstärkungsrippen** zwischen den Grundkörperbereichen; Materialzugabe statt Fasenabtrag
+- 6-mm-Tragsteg an der 3er-Gabel
 
-### STL in OpenSCAD exportieren
+### STL exportieren
 
-1. `cad/Gelenk_V1_Test.scad` öffnen.
-2. `teil` einzeln auf `"backe_oben"`, `"backe_unten"` oder `"kugel_test"` setzen.
-3. Mit F6 rendern und über *Datei → Exportieren → STL* exportieren.
-4. Für jeden der drei Teile wiederholen.
+OpenSCAD-Datei öffnen, **F6** für das vollständige Rendern ausführen und **Datei → Exportieren → STL** wählen. Ein geprüfter V2.8-Testexport wurde im Chat als Prüfpaket bereitgestellt; die GitHub-Datei ist die parametrische CAD-Quelle.
 
-### Druckempfehlung (Ender 3 V3 SE / eSUN PLA+)
+### Drucken und prüfen
 
-- 0,20 mm Schichthöhe, 5 Wände.
-- Klemmbacken: 60 % Infill; Kugel: 80–100 %.
-- Kugel mit Stiel benötigt möglicherweise Stützmaterial.
-- Klemmbacken für gute Auflage im Slicer sinnvoll orientieren; Druckorientierung und Schraubenlast beachten.
+Erste Passungsprüfung mit eSUN PLA+ auf Ender 3 V3 SE, beispielsweise 0,20 mm Schichthöhe und fünf Wänden. Bauteil in Cura so orientieren, dass die Schraubenlochachsen günstig zu den Druckschichten liegen. Bei Bedarf Supports in der Schichtvorschau kontrollieren.
 
-### Hardware und Montage
-
-- 2 × M5-Schraube, Länge am Druckteil prüfen (Richtwert 35–40 mm).
-- 2 × M5-Sechskantmutter und 2 × Unterlegscheibe.
-- Kugel zwischen die Backen setzen, Muttern einsetzen und Schrauben **schrittweise** anziehen.
-- Beweglichkeit, Klemmkraft, Bruchstellen und Kriechen prüfen.
-
-**Wichtig:** Nicht ohne Belastungsprüfung mit Kamera oder empfindlichen Geräten über einer ungeschützten Fläche einsetzen. Die 150 g bei 360 mm Ausladung sind eine *Zielvorgabe*, kein geprüfter Wert.
+**Status:** STL geometrisch geschlossen und zusammenhängend; mechanische Passung, Langzeitstabilität und Ziel-Nutzlast von 150 g sind noch nicht durch einen Belastungstest nachgewiesen.
 
 ### Geplante nächste Schritte
 
-1. Kugelpassung und Klemmschrauben im Testdruck prüfen.
-2. 120-mm-Module und einzeln arretierbare Gelenke konstruieren.
-3. Tischklemme mit Metallspindel und austauschbarer Kugelaufnahme entwickeln.
-4. Wechseladapter für 1/4"-20-UNC-Kameragewinde und Werkzeuge.
-5. Endlast und Kipp-/Klemmstabilität testen.
+1. V2.8 in Cura und im realen Gabelverbund prüfen.
+2. 120-mm-Armmodule für kombinierbare Gabelgelenke konstruieren.
+3. Tischklemme mit Metallspindel und Montageoption für Werkstattgewicht erstellen.
+4. Wechseladapter für Kamera-/Werkzeughalter entwickeln.
+5. Gelenk- und Standsicherheitsprüfung mit realer Last durchführen.
 
-Die fertigen STL-Testexporte sind derzeit im ursprünglichen Test-ZIP enthalten; dieses Repository enthält die reproduzierbare OpenSCAD-Quelle.
+Alte CAD-Zwischenstände wurden aus dem aktuellen Repository entfernt; sie bleiben über die Git-Historie nachvollziehbar.
